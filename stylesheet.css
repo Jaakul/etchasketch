@@ -1,0 +1,82 @@
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    width:100%;
+    background-color: gray;
+    position:absolute;
+    
+ 
+    
+}
+
+.appContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    width:600px;
+
+}
+
+.banner{
+    background-color: yellow;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100px;
+    width:600px;
+    flex-grow:1;
+    margin:20px;
+    font-family:'Courier New', Courier, monospace;
+    font-size:40px;
+
+}
+
+#sketchContainer{
+    display:grid;
+    grid-template-columns:repeat(16,40px);
+    width: 640px;
+    height: 640px;
+    border: solid 2px red;
+    cursor:none;
+    
+    
+
+
+}
+
+#divs{
+background-color:white;
+display:flex;
+height:40px;
+width:40px;
+flex: 1 0 auto;
+align-items: stretch;
+
+
+
+
+    
+}
+
+#divs:hover{
+    background-color:red;
+
+}
+
+.buttonContainer{
+    display:flex;
+    height:200px;
+    flex-grow:1;
+    justify-content: space-between;
+    margin:20px;
+
+}
+
+button{
+    height:40px;
+    width:140px;
+
+}
