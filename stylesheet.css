@@ -62,7 +62,7 @@ align-items: stretch;
 }
 
 #divs:hover{
-    background-color:red;
+    background-color:black;
 
 }
 
@@ -75,8 +75,20 @@ align-items: stretch;
 
 }
 
-button{
+.button{
+    display:flex;
+    margin:20px;
+    justify-content: center;
+    align-items:center;
     height:40px;
-    width:140px;
+    width:128px;
+    font-family:'Courier New', Courier, monospace;
+    font-weight:bolder;
+    border: solid 2px red;
 
 }
+
+.button:hover{
+    cursor: grab;
+}
+

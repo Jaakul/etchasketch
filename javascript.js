@@ -1,7 +1,12 @@
 const container = document.getElementById('sketchContainer');
 const defaultSize16 = 16*16
-let newSize 
-
+const gridSize = document.getElementById('gridSize');
+const colorPicker = document.getElementById('colorPicker');
+const rainbow = document.getElementById('rainbow');
+const shader = document.getElementById('shader');
+const resetButton = document.getElementById('resetButton');
+let newSize;
+let currentColor = "black"
 for(let i=0;i<defaultSize16;i++){
     el()
 }
@@ -21,10 +26,9 @@ function removeAllChildren(){
 }
 
 function reset(){
-    removeAllChildren();
-    for(let i=0;i<defaultSize16;i++){
-        el()
-    }
+removeAllChildren();
+hwSet(16);
+
 }
 
 function setGrid(){
@@ -49,4 +53,28 @@ grid.style.gridTemplateColumns = `repeat(${input},${640/input}px)`
 grid.style.gridTemplateRows = `repeat(${input},${640/input}px)`
 }
 
+
+function test(){
+    alert('why is this function not running?')
+}
+
+
+
+function colorChanger(){
+    let ele = document.querySelectorAll('divs');
+    for (let i=0;i<ele.length;i++){
+    function eleChange(){ele[i].style.backgroundColor = `${currentColor}`;}
+    ele[i].addEventListener('mouseover',eleChange)
+    }
+    }
+
+
+resetButton.addEventListener('click',reset);
+
+container.addEventListener('click',colorChanger)
+
+colorPicker.addEventListener('input',function(){
+    var theColor = colorPicker.value;
+    currentColor = theColor;
+})
 
