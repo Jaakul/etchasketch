@@ -78,3 +78,11 @@ colorPicker.addEventListener('input',function(){
     currentColor = theColor;
 })
 
+gridSize.addEventListener('click',gridSizBtn)
+
+function gridSizBtn(){
+    var a = prompt("Please enter a number to indicate grid size. \nDefault 16x16. Max 100.","16");
+    if (a!= null && a<101 && a>0){
+        hwSet(a);
+    }
+    else {alert("You have inputted an invalid selection")}}
