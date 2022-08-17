@@ -31,6 +31,7 @@ function removeAllChildren(){
     }
 }
 
+//reset function
 function reset(){
 removeAllChildren();
 hwSet(currentSize);
@@ -38,12 +39,13 @@ colorChanger();
 
 }
 
+
+//set grid functions
 function setGrid(){
     removeAllChildren();
     for(let i=0;i<newSize;i++){
         el()
     }}
-
 function hwSet(input){
 newSize = input**2;
 console.log(newSize);
@@ -62,22 +64,40 @@ grid.style.gridTemplateRows = `repeat(${input},${640/input}px)`
 
 //color shader//
 function colorShader(){
-    let ele = document.querySelectorAll('divs');
 
+    }
+
+//random color generator//
+function randomColor(){
+    let color = "";
+    let a = ['A','B','C','D','E','F','1','2','3','4','5','6','7','8','9','0']
+
+        for (let i=0;i<6;i++){
+            color += a[((Math.floor(Math.random()*16)))]
+        };
+    return color;
+}
+
+//random color maker
+rainbow.addEventListener('click',randomColorMaker);
+
+function randomColorMaker(){
+    // removeAllChildren();
+    // hwSet(currentSize);
+    let ele = document.querySelectorAll('divs');
     function colorMaker(){
         const controller = new AbortController();
-        function aborter(){controller.abort()}
+        function aborter(){controller.abort();console.log('abort')}
         for (let i=0;i<ele.length;i++){
-        function eleChange(){ele[i].style.filter = "brightness(85%)";}
+        function eleChange(){ele[i].style.backgroundColor = `#${randomColor()}`;}
         ele[i].addEventListener('mouseover',eleChange,{signal:controller.signal})
         container.addEventListener('mouseup',aborter)
         }
         }
     
+    
         container.addEventListener('mousedown',colorMaker)
     }
-
-//random color generator//
 
 
 
@@ -86,7 +106,6 @@ function colorShader(){
 //colorChanger
 function colorChanger(){
 let ele = document.querySelectorAll('divs');
-
 //function to change color with event listeners and aborter
 //can not use function expressions because it seems to cause an exponential
 // repetition of function creation and thus slowing down the app.
@@ -99,8 +118,6 @@ function colorMaker(){
     container.addEventListener('mouseup',aborter)
     }
     }
-
-
     container.addEventListener('mousedown',colorMaker)
 }
 
@@ -113,7 +130,10 @@ resetButton.addEventListener('click',reset);
 colorPicker.addEventListener('input',function(){
     var theColor = colorPicker.value;
     currentColor = theColor;
+    colorChanger();
 })
+
+
 
 //grid sizing button & function
 gridSize.addEventListener('click',gridSizBtn)

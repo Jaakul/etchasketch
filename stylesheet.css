@@ -68,10 +68,12 @@ align-items: stretch;
 
 .buttonContainer{
     display:flex;
-    height:200px;
+    height:100px;
     flex-grow:1;
     justify-content: space-between;
     margin:20px;
+    background-color:lightgoldenrodyellow;
+    align-items:center;
 
 }
 
@@ -85,6 +87,7 @@ align-items: stretch;
     font-family:'Courier New', Courier, monospace;
     font-weight:bolder;
     border: solid 2px red;
+    background-color: lightpink
 
 }
 
