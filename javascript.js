@@ -8,6 +8,8 @@ const resetButton = document.getElementById('resetButton');
 let newSize;
 let currentColor = "black"
 let currentSize = 16
+let currentBright = 100
+
 
 
 //initiates page with default 16x16 grid
@@ -63,9 +65,34 @@ grid.style.gridTemplateRows = `repeat(${input},${640/input}px)`
 }
 
 //color shader//
-function colorShader(){
+shader.addEventListener('click',colorShader);
 
+function colorShader(){
+    let ele = document.querySelectorAll('divs');
+    function colorMaker(){
+        console.log("global abort");
+        const controller = new AbortController();
+        function aborter(){controller.abort()}
+        for (let i=0;i<ele.length;i++){
+        function eleChange(){   
+   
+            ele[i].style.backgroundColor = ele[i].style.backgroundColor
+            ele[i].style.filter = "brightness("+currentBright+"%)";
+            shadeFilter(currentBright)}
+        ele[i].addEventListener('mouseover',eleChange,{signal:controller.signal,capture:true})
+        container.addEventListener('mouseup',aborter,{once:true})
+        }
+
+
+
+
+        }
+        container.addEventListener('mousedown',colorMaker)
     }
+
+
+
+
 
 //random color generator//
 function randomColor(){
@@ -91,7 +118,7 @@ function randomColorMaker(){
         for (let i=0;i<ele.length;i++){
         function eleChange(){ele[i].style.backgroundColor = `#${randomColor()}`;}
         ele[i].addEventListener('mouseover',eleChange,{signal:controller.signal})
-        container.addEventListener('mouseup',aborter)
+        container.addEventListener('mouseup',aborter,{once:true})
         }
         }
     
@@ -115,7 +142,7 @@ function colorMaker(){
     for (let i=0;i<ele.length;i++){
     function eleChange(){ele[i].style.backgroundColor = `${currentColor}`;}
     ele[i].addEventListener('mouseover',eleChange,{signal:controller.signal})
-    container.addEventListener('mouseup',aborter)
+    container.addEventListener('mouseup',aborter,{once:true})
     }
     }
     container.addEventListener('mousedown',colorMaker)
